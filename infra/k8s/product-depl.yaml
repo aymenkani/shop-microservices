@@ -5,7 +5,7 @@ metadata:
 spec:
   replicas: 1
   selector: 
-    mathLabels: 
+    matchLabels: 
       app: product
   template:
     metadata:
@@ -16,6 +16,14 @@ spec:
         - name: product
           image: aymenkani/product
           env:
+          - name: NATS_CLIENT_ID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: NATS_URL
+            value: 'http://nats-srv:4222'
+          - name: NATS_CLUSTER_ID
+            value: ticketing
             - name: MONGO_URI
               value: "mongodb://product-mongo-srv:27017/product"
 ---

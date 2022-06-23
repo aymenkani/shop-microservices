@@ -2,8 +2,10 @@ import express from 'express';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { NotFoundError, errorHandler } from '@gnshop/common';
-import { indexProductRouter } from './routes';
-import { newProductRouter } from './routes/new';
+import { currentUserRouter } from './routes/current-user'
+import { signinRouter } from './routes/signin';
+import { signupRouter } from './routes/signup';
+import { signoutRouter } from './routes/signout';
 
 const app = express()
 
@@ -16,8 +18,10 @@ app.use(
     })
 )
 
-app.use(indexProductRouter);
-app.use(newProductRouter);
+app.use(currentUserRouter);
+app.use(signinRouter);
+app.use(signupRouter);
+app.use(signoutRouter);
 
 app.all('*', async (req, res) => {
     throw new NotFoundError();

@@ -11,5 +11,9 @@ or you can use kubernetes CLI (kubectl) directly and run each service separately
 
 All the kubernetes deployment files are in the infra/k8s directory
 
+# diagram
+
+![alt diagram](https://raw.githubusercontent.com/aymenkani/shop-microservices/main/images/shop_microservices-Page-1.drawio.png)
+
 
 

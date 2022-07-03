@@ -1,5 +1,5 @@
 # shop-microservices
-A  microservices  nodejs app  with micro front-end with reactjs in the front-end
+A  microservices  nodejs app  with micro front-end with reactjs
 
 This app uses nats as a streaming server for the backend services.
 

@@ -15,5 +15,7 @@ All the kubernetes deployment files are in the infra/k8s directory
 
 ![alt diagram](https://raw.githubusercontent.com/aymenkani/shop-microservices/main/images/shop_microservices-Page-1.drawio.png)
 
+![alt diagram](https://raw.githubusercontent.com/aymenkani/shop-microservices/main/images/shop_microservices-Page-4.drawio.png)
+
 
 

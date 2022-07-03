@@ -1,0 +1,13 @@
+name: tests-prodcut
+
+on:
+  pull_request:
+    paths:
+      - 'prodcut/**'
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     - run: cd prodcut && npm install && npm run test:ci

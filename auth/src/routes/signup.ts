@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 const router = express.Router()
 
-router.post('/api/signin',
+router.post('/api/users/signin',
     [
         body('email')
             .not().isEmpty()

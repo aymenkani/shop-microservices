@@ -13,7 +13,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router()
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60
+const EXPIRATION_WINDOW_SECONDS = 30 * 60
 
 router.post('/api/orders', requireAuth, async (req: Request, res: Response, next: NextFunction ) => {
 
@@ -23,10 +23,10 @@ router.post('/api/orders', requireAuth, async (req: Request, res: Response, next
 
     if(!product) throw new NotFoundError();
 
-    const remaningQuantity = product.quantity - orderedQuantity;
+    const { isAvailable, availableQuantity } = product.isAvailable(orderedQuantity)
 
-    if(remaningQuantity < 0) {
-        throw new BadRequestError('ordered quantity must not be greater than available quantity');
+    if(!isAvailable) {
+        throw new BadRequestError(`${availableQuantity} quantity is only available at the moment`);
     }
 
     // set expiration time

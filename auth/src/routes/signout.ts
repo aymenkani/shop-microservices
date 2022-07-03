@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 
 const router = express.Router();
 
-router.get('/api/current-user' ,async (req: Request, res: Response, next: NextFunction) => {
+router.get('/api/users/current-user' ,async (req: Request, res: Response, next: NextFunction) => {
     req.session = null
 
     res.send({})

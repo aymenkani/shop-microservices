@@ -4,7 +4,7 @@ import { Product } from '../models/product';
 
 const router = express.Router();
 
-router.get('/api/products:productId', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
+router.get('/api/products/:productId', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
     const product = await Product.findById(req.params.id).populate('image');
 
     if(!product) {

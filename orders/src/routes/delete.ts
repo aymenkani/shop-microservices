@@ -6,7 +6,7 @@ import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router()
 
-router.delete('/api/orders/cancel/:id', async (req: Request, res: Response, next: NextFunction ) => {
+router.delete('/api/orders/:id', async (req: Request, res: Response, next: NextFunction ) => {
     const order = await Order.findById(req.params.id).populate('product');
    
     if(!order) throw new NotFoundError();
@@ -40,4 +40,4 @@ router.delete('/api/orders/cancel/:id', async (req: Request, res: Response, next
 
 });
 
-export { router as cancelOrderRouter }
+export { router as deleteOrderRouter }

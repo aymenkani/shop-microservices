@@ -42,8 +42,8 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.Date,
     },
     orderedQuantity: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
     },
     product: {
       type: mongoose.Schema.Types.ObjectId,

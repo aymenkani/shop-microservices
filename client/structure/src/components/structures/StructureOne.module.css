@@ -1,0 +1,20 @@
+.sidebar {
+    text-shadow: none;
+}
+
+.sidebarBtn {
+    visibility: hidden;
+    display: none;
+}
+
+.sidebarBtn:checked ~ .sidebar {
+    transition: all .2s;
+    transform: translateX(-100%);
+
+}
+
+@media only screen and (min-width: 640px) {
+    .sidebarBtn:checked ~ .sidebar {
+        transform: translateX(0);
+    }
+}

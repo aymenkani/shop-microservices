@@ -14,7 +14,7 @@ import { uploadDir } from '../constants/'
 
 const router = express.Router()
 
-router.post('/api/products/update/:id', 
+router.put('/api/products/:id', 
 requireAuth,
     [
         body('title')

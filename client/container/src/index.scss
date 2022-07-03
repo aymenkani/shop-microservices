@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-list {
+  display: none;
+}
+
+.outer-menu {
+  display: none;
+  visibility: hidden;
+}
+
+.stroke-account {
+  stroke: red;
+  stroke-width: 1;
+  stroke-linecap: butt;
+  stroke-dasharray: 0;
+}
+
+
+.close-menu-btn {
+  display: none;
+  visibility: hidden;
+
+}
+
+#menuBtn:checked ~ .menu-list {
+  display: flex;
+}
+
+#menuBtn:checked ~ .outer-menu {
+  display: flex;
+  visibility: visible;
+}
+
+#menuBtn:checked ~ .close-menu-btn {
+  display: flex;
+  visibility: visible;
+}

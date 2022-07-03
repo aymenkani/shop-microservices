@@ -15,7 +15,8 @@ export interface ProductDoc extends mongoose.Document {
   quantity: number;
   version: number;
   reserved: number;
-  isReserved(): Promise<boolean>;
+  isAvailable(orderedQuantity: number): 
+  {isAvailable: Boolean, availableQuantity: number};
 }
 
 interface ProductModel extends mongoose.Model<ProductDoc> {
@@ -72,22 +73,14 @@ productSchema.statics.build = (attrs: ProductAttrs) => {
     price: attrs.price,
   });
 };
-productSchema.methods.isReserved = async function (orderedQuantity: number) {
-  // this === the product document that we just called 'isReserved' on
-  const existingOrder = await Order.findOne({
-    product: this as any,
-    status: {
-      $in: [
-        OrderStatus.Created,
-        OrderStatus.AwaitingPayment,
-        OrderStatus.Complete,
-      ],
-    },
-  });
+productSchema.methods.isAvailable = function (orderedQuantity: number)  {
+  if(!this) return;    
 
-  const isAvailable = this.quantity - (this.reserved + orderedQuantity) > 0
+  const availableQuantity =  this.quantity - (this.reserved + orderedQuantity)
 
-  return (!!existingOrder) && isAvailable
+  const isAvailable = availableQuantity > 0
+
+  return {isAvailable, availableQuantity}
 };
 
 const Product = mongoose.model<ProductDoc, ProductModel>('Product', productSchema);

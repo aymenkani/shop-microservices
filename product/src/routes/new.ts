@@ -13,7 +13,7 @@ import { natsWrapper } from '../nats-wrapper'
 const router = express.Router();
 
 
-router.post("/api/new/product",
+router.post("/api/products",
     requireAuth, 
     [
         body('title')
